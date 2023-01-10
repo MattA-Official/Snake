@@ -1,6 +1,6 @@
 namespace Snake
 {
-    enum gameState
+    enum GameState
     {
         MENU,
         PLAYING,

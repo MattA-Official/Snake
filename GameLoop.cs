@@ -5,34 +5,72 @@ namespace Snake
 {
     class GameLoop
     {
-        static void Start()
+        private static GameState gameState;
+        private static Menu menu;
+
+        public void Start()
         {
-            gameState gameState = gameState.MENU;
+            // Set initial game state
+            gameState = GameState.MENU;
+
+            // Create a new menu
+            menu = new Menu(new string[] { "Start", "Exit" });
 
             while (true)
             {
                 switch (gameState)
                 {
                     // TODO: Add code for each state
-                    case gameState.MENU:
-
+                    case GameState.MENU:
+                        HandleMenu();
                         break;
 
-                    case gameState.PLAYING:
-
+                    case GameState.PLAYING:
+                        throw new NotImplementedException();
                         break;
 
-                    case gameState.PAUSED:
-
+                    case GameState.PAUSED:
+                        throw new NotImplementedException();
                         break;
 
-                    case gameState.GAMEOVER:
-
+                    case GameState.GAMEOVER:
+                        throw new NotImplementedException();
                         break;
                 }
 
                 // Limit the game loop to 60 frames per second
                 Thread.Sleep(1000 / 60);
+            }
+        }
+
+        // Method to handle the menu
+        private static void HandleMenu()
+        {
+            // Open the menu
+            menu.OpenMenu();
+
+            // Draw the menu
+            menu.Draw();
+
+            // Handle input
+            menu.HandleInput();
+
+            // Check if the menu is still open
+            if (!menu.Open)
+            {
+                // Check which option was selected
+                switch (menu.GetSelectedOption())
+                {
+                    case 0:
+                        // Start the game
+                        gameState = GameState.PLAYING;
+                        break;
+
+                    case 1:
+                        // Exit the game
+                        Environment.Exit(0);
+                        break;
+                }
             }
         }
     }
