@@ -24,6 +24,7 @@ namespace Snake
         {
             Random random = new Random();
 
+            // TODO: Make sure the fruit doesn't spawn on the snake
             X = random.Next(0, 10);
             Y = random.Next(0, 10);
         }
