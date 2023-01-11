@@ -27,6 +27,22 @@ namespace Snake
             }
         }
 
+        public void Draw(string message)
+        {
+            Console.Clear();
+
+            Console.WriteLine(message);
+
+            for (int i = 0; i < Options.Length; i++)
+            {
+                if (i == SelectedOption)
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine(Options[i]);
+                Console.ResetColor();
+            }
+        }
+
         public void HandleInput()
         {
             ConsoleKeyInfo key = Console.ReadKey();
