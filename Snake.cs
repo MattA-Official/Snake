@@ -26,12 +26,14 @@ namespace Snake
         {
             foreach (SnakeSegment segment in SnakeSegments)
             {
-                Console.SetCursorPosition(segment.X, segment.Y);
-                Console.Write("■");
+                Console.SetCursorPosition(segment.X * 2, segment.Y);
+                Console.Write(" ■");
             }
 
-            Console.SetCursorPosition(Fruit.X, Fruit.Y);
-            Console.Write(".");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(Fruit.X * 2, Fruit.Y);
+            Console.Write(" .");
+            Console.ResetColor();
         }
 
         // Control the snake using arrow keys
