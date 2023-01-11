@@ -34,11 +34,13 @@ namespace Snake
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    SelectedOption--;
+                    if (SelectedOption > 0)
+                        SelectedOption--;
                     break;
 
                 case ConsoleKey.DownArrow:
-                    SelectedOption++;
+                    if (SelectedOption < Options.Length - 1)
+                        SelectedOption++;
                     break;
 
                 case ConsoleKey.Enter:

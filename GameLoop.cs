@@ -7,14 +7,21 @@ namespace Snake
     {
         private static GameState gameState;
         private static Menu menu;
+        private static Snake snake;
 
         public void Start()
         {
+            // Hide the cursor
+            Console.CursorVisible = false;
+
             // Set initial game state
             gameState = GameState.MENU;
 
             // Create a new menu
             menu = new Menu(new string[] { "Start", "Exit" });
+
+            // Create a new snake
+            snake = new Snake();
 
             while (true)
             {
@@ -26,7 +33,7 @@ namespace Snake
                         break;
 
                     case GameState.PLAYING:
-                        throw new NotImplementedException();
+                        HandlePlaying();
                         break;
 
                     case GameState.PAUSED:
@@ -38,8 +45,8 @@ namespace Snake
                         break;
                 }
 
-                // Limit the game loop to 60 frames per second
-                Thread.Sleep(1000 / 60);
+                // Limit the game loop to 6 frames per second
+                Thread.Sleep(1000 / 6);
             }
         }
 
@@ -71,6 +78,28 @@ namespace Snake
                         Environment.Exit(0);
                         break;
                 }
+            }
+        }
+
+        private static void HandlePlaying()
+        {
+            // Clear the console
+            Console.Clear();
+
+            // Draw the snake
+            snake.Draw();
+
+            // Handle input
+            snake.HandleInput();
+
+            // Move the snake
+            snake.Move();
+
+            // Check for a collision
+            if (snake.CheckCollision())
+            {
+                // Change the game state to game over
+                gameState = GameState.GAMEOVER;
             }
         }
     }
