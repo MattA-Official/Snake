@@ -10,6 +10,8 @@ namespace Snake
         private static Menu gameOverMenu;
         private static Menu pauseMenu;
         private static Snake snake;
+        private static int Score;
+        private static int HighScore;
 
         public void Start()
         {
@@ -26,6 +28,10 @@ namespace Snake
 
             // Create a new snake
             snake = new Snake();
+
+            // Set the score to 0
+            Score = 0;
+            HighScore = 0;
 
             while (true)
             {
@@ -115,13 +121,21 @@ namespace Snake
 
         private static void HandleGameOver()
         {
-            Reset();
+            // Save the score
+            Score = snake.SnakeSegments.Count - 1;
+
+            // Check if the score is higher than the high score
+            if (Score > HighScore)
+            {
+                // Set the high score to the score
+                HighScore = Score;
+            }
 
             // Open the menu
             gameOverMenu.OpenMenu();
 
             // Draw the menu
-            gameOverMenu.Draw("Game Over!");
+            gameOverMenu.Draw($"Game Over! Score: {Score}, High Score: {HighScore}");
 
             // Handle input
             gameOverMenu.HandleInput();
@@ -129,6 +143,9 @@ namespace Snake
             // Check if the menu is still open
             if (!gameOverMenu.Open)
             {
+                // Reset the snake
+                Reset();
+
                 // Check which option was selected
                 switch (gameOverMenu.GetSelectedOption())
                 {

@@ -45,9 +45,9 @@ namespace Snake
 
         public void HandleInput()
         {
-            ConsoleKeyInfo key = Console.ReadKey();
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-            switch (key.Key)
+            switch (keyInfo.Key)
             {
                 case ConsoleKey.UpArrow:
                     if (SelectedOption > 0)
