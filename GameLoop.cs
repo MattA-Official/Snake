@@ -13,7 +13,7 @@ namespace Snake
         private static int Score;
         private static int HighScore;
 
-        public void Start()
+        public static void Start()
         {
             // Hide the cursor
             Console.CursorVisible = false;
@@ -46,7 +46,6 @@ namespace Snake
                         break;
 
                     case GameState.PAUSED:
-                        // TODO: Add a way to pause the game
                         HandlePause();
                         break;
 
@@ -58,6 +57,12 @@ namespace Snake
                 // Limit the game loop to 6 frames per second
                 Thread.Sleep(1000 / 6);
             }
+        }
+
+        public static void Pause()
+        {
+            // Change the game state to paused
+            gameState = GameState.PAUSED;
         }
 
         private static void Reset()

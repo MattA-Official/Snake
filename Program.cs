@@ -6,8 +6,7 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            GameLoop game = new GameLoop();
-            game.Start();
+            GameLoop.Start();
         }
     }
 }

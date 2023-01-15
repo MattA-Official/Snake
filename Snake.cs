@@ -61,6 +61,9 @@ namespace Snake
                     case ConsoleKey.LeftArrow:
                         Direction = 3;
                         break;
+                    case ConsoleKey.Escape:
+                        GameLoop.Pause();
+                        break;
                     default:
                         break;
                 }
