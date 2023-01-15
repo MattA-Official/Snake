@@ -9,7 +9,7 @@ namespace Snake
         private static Menu menu;
         private static Menu gameOverMenu;
         private static Menu pauseMenu;
-        private static Snake snake;
+        public static Snake snake { get; private set; }
         private static int Score;
         private static int HighScore;
 

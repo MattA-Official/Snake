@@ -24,9 +24,14 @@ namespace Snake
         {
             Random random = new Random();
 
-            // TODO: Make sure the fruit doesn't spawn on the snake
-            X = random.Next(0, 10);
-            Y = random.Next(0, 10);
+            // Make sure the fruit doesn't spawn on the snake
+            do
+            {
+                X = random.Next(0, 10);
+                Y = random.Next(0, 10);
+            } while (
+                GameLoop.snake.SnakeSegments.Exists(segment => segment.X == X && segment.Y == Y)
+            );
         }
     }
 }
