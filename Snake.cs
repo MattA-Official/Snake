@@ -47,19 +47,23 @@ namespace Snake
                 {
                     case ConsoleKey.W:
                     case ConsoleKey.UpArrow:
-                        Direction = 0;
+                        if (Direction != 2)
+                            Direction = 0;
                         break;
                     case ConsoleKey.D:
                     case ConsoleKey.RightArrow:
-                        Direction = 1;
+                        if (Direction != 3)
+                            Direction = 1;
                         break;
                     case ConsoleKey.S:
                     case ConsoleKey.DownArrow:
-                        Direction = 2;
+                        if (Direction != 0)
+                            Direction = 2;
                         break;
                     case ConsoleKey.A:
                     case ConsoleKey.LeftArrow:
-                        Direction = 3;
+                        if (Direction != 1)
+                            Direction = 3;
                         break;
                     case ConsoleKey.Escape:
                         GameLoop.Pause();
